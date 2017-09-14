@@ -1,11 +1,10 @@
-package com.dreamygeeks.mms;
+package fxmlexample;
 
-import com.dreamygeeks.mms.view.MaterialView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,7 +26,14 @@ public class MaterialManagementApplication extends Application {
         System.out.println("I am in init");
 
         springContext = SpringApplication.run(MaterialManagementApplication.class);
-        root = new MaterialView().asParent();
+       // AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(fxmlexample.MaterialManagementApplication.class);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml_example.fxml"));
+        fxmlLoader.setControllerFactory(springContext::getBean);
+        root = fxmlLoader.load();
+        //appContext.getBean(MaterialController.class);
+        // root.setCenter(new MaterialView().asParent());
+        //root = new MaterialView().asParent();
+
 	}
 
 	@Override
