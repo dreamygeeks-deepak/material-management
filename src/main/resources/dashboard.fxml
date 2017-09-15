@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="root"
+            xmlns="http://javafx.com/javafx/8.0.112" fx:controller="com.dreamygeeks.mms.dashboard.DashboardController">
+    <stylesheets>
+        <URL value="@Login.css" />
+    </stylesheets>
+    <top>
+       <Text id="welcome-text" text="Material Management System" />
+   </top>
+    <left>
+      <VBox prefHeight="400.0" prefWidth="200.0" spacing="5" BorderPane.alignment="CENTER">
+          <Button fx:id="materialButton" onAction="#handlematerialButtonAction" prefHeight="50.0" prefWidth="300.0" text="Material Management" />
+          <Button fx:id="companyButton" onAction="#handleCompanyButtonAction" prefHeight="50.0" prefWidth="300.0" text="Company Management" />
+          <Button fx:id="purchaseOrderButton" prefHeight="50.0" prefWidth="300.0" text="Create Purchase Order" />
+          <Button fx:id="salesOrderButton" prefHeight="50.0" prefWidth="300.0" text="Create Sales Order" />
+          <Button fx:id="salesReportButton" prefHeight="50.0" prefWidth="300.0" text="Report for Sales" />
+          <Button fx:id="purcahseReportButton" prefHeight="50.0" prefWidth="300.0" text="Report for Purchase" />
+          <Button fx:id="franchiseReportButton" prefHeight="50.0" prefWidth="300.0" text="Report for a Frachise" />
+          <Button fx:id="stockAlertButton" prefHeight="50.0" prefWidth="300.0" text="Report for Stock Alert" />
+          <Button fx:id="damageExpiryReportButton" prefHeight="50.0" prefWidth="300.0" text="Report for Damage/Expiry" />
+          <Button fx:id="adjustMentEntriesReportButton" prefHeight="50.0" prefWidth="300.0" text="Report for Adjustment Entries" />
+      </VBox>
+   </left>
+   <center>
+       <StackPane fx:id="centerStackPane" prefHeight="150.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+           <fx:include fx:id="materialScreen" source="material.fxml"></fx:include>
+           <fx:include fx:id="companyScreen" source="company.fxml"></fx:include>
+      </StackPane>
+   </center>
+</BorderPane>

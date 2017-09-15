@@ -1,47 +1,56 @@
-package com.dreamygeeks.mms.view;
+package com.dreamygeeks.mms.material;
 
-import com.dreamygeeks.mms.controller.MaterialController;
+
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.paint.Material;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by deepak_shingan on 9/14/2017.
  */
-public class MaterialView implements MMSView{
+@Component
+public class MaterialView {
     private GridPane view ;
     private TextField nameText;
     private Label nameLabel;
+    private Button button;
     @Autowired
-    private MaterialController controller ;
-
-    @Autowired
-    private Material model;
-
+    private MaterialController controller = new MaterialController();
 
     public MaterialView() {
-        System.out.println(""+model);
+        System.out.println("Inside View");
         System.out.println(""+controller);
         createGUI();
     }
 
-    @Override
     public void createGUI() {
         createLayout();
         addFields();
+        addConfiguration();
     }
 
     private void addFields() {
         nameText = new TextField();
         nameLabel = new Label("Name");
+        button = new Button("Ok");
         view.addRow(0, nameLabel, nameText);
+        view.addRow(0, button);
+
+    }
+
+    private void addConfiguration(){
+        button.setOnAction((event) -> {
+            System.out.println("hahaha");
+            controller.save(new Material(nameText.getText()));
+        } );
     }
 
     private void createLayout() {

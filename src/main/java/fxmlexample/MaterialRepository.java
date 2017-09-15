@@ -1,6 +1,5 @@
-package com.dreamygeeks.mms.model;
+package fxmlexample;
 
-import com.dreamygeeks.mms.model.Material;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

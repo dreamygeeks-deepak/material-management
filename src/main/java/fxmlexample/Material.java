@@ -1,4 +1,4 @@
-package com.dreamygeeks.mms.model;
+package fxmlexample;
 
 import javax.persistence.*;
 

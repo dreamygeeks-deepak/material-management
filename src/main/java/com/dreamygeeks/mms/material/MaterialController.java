@@ -1,6 +1,5 @@
-package com.dreamygeeks.mms.controller;
+package com.dreamygeeks.mms.material;
 
-import com.dreamygeeks.mms.model.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,5 +15,12 @@ public class MaterialController {
 
     public MaterialController() {
         System.out.println("Inside material controller");
+    }
+
+    public void save(Material material){
+        System.out.println("Saving");
+        materialRepository.save(material);
+        System.out.println("Saved");
+
     }
 }
