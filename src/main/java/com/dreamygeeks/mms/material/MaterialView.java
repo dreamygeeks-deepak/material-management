@@ -1,8 +1,6 @@
-package com.dreamygeeks.mms.view;
+package com.dreamygeeks.mms.material;
 
-import com.dreamygeeks.mms.model.MaterialController;
-import com.dreamygeeks.mms.model.Material;
-import javafx.fxml.FXML;
+
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -19,7 +17,7 @@ import org.springframework.stereotype.Component;
  * Created by deepak_shingan on 9/14/2017.
  */
 @Component
-public class MaterialView implements MMSView{
+public class MaterialView {
     private GridPane view ;
     private TextField nameText;
     private Label nameLabel;
@@ -33,7 +31,6 @@ public class MaterialView implements MMSView{
         createGUI();
     }
 
-    @Override
     public void createGUI() {
         createLayout();
         addFields();

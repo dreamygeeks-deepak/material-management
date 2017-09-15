@@ -1,4 +1,4 @@
-package com.dreamygeeks.mms.model;
+package com.dreamygeeks.mms.material;
 
 import javax.persistence.*;
 

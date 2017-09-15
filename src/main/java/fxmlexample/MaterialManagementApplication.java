@@ -27,7 +27,7 @@ public class MaterialManagementApplication extends Application {
 
         springContext = SpringApplication.run(MaterialManagementApplication.class);
        // AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(fxmlexample.MaterialManagementApplication.class);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml_example.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);
         root = fxmlLoader.load();
         //appContext.getBean(MaterialController.class);

@@ -1,5 +1,0 @@
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane fx:controller="com.dreamygeeks.mms.model.MaterialController"
-            xmlns:fx="http://javafx.com/fxml">
-        <!-- more stuff here -->
-</BorderPane>

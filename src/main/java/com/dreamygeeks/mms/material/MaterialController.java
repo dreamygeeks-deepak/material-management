@@ -1,15 +1,7 @@
-package com.dreamygeeks.mms.model;
+package com.dreamygeeks.mms.material;
 
-import com.dreamygeeks.mms.model.Material;
-import com.dreamygeeks.mms.model.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Created by deepak_shingan on 9/14/2017.

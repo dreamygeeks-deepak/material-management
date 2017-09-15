@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<BorderPane styleClass="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@Login.css" />
+    </stylesheets>
+    <top>
+       <Text id="welcome-text" text="Material Management System"  />
+   </top>
+    <left>
+      <VBox prefHeight="400.0" prefWidth="200.0" spacing="5" BorderPane.alignment="CENTER">
+          <Button prefHeight="50.0" prefWidth="300.0" text="Material Management" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Company Management" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Create Purchase Order" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Create Sales Order" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Report for Sales" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Report for Purchase" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Report for a Frachise" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Report for Stock Alert" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Report for Damage/Expiry" />
+          <Button prefHeight="50.0" prefWidth="300.0" text="Report for Adjustment Entries" />
+      </VBox>
+   </left>
+</BorderPane>
