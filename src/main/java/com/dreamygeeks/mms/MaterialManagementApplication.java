@@ -1,16 +1,20 @@
 package com.dreamygeeks.mms;
 
+import com.dreamygeeks.mms.dashboard.DashboardController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class MaterialManagementApplication extends Application {
+    @Autowired
+    DashboardController dashboardController;
     private ConfigurableApplicationContext springContext;
     private Parent root;
 
@@ -24,7 +28,8 @@ public class MaterialManagementApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);
         root = fxmlLoader.load();
-	}
+
+    }
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

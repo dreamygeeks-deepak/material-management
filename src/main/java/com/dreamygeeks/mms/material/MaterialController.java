@@ -12,7 +12,6 @@ public class MaterialController {
     @Autowired
     MaterialRepository materialRepository;
 
-
     public MaterialController() {
         System.out.println("Inside material controller");
     }
@@ -21,6 +20,5 @@ public class MaterialController {
         System.out.println("Saving");
         materialRepository.save(material);
         System.out.println("Saved");
-
     }
 }

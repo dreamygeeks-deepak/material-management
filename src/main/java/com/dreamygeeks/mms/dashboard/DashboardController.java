@@ -1,11 +1,13 @@
 package com.dreamygeeks.mms.dashboard;
 
+import com.dreamygeeks.mms.welcome.WelcomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +15,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DashboardController {
+    @Autowired
+    WelcomeController welcomeController;
+    @FXML
+    private Text titleText;
     @FXML private Button materialButton;
     @FXML private Button companyButton;
     @FXML private Button purchaseOrderButton;
@@ -23,24 +29,40 @@ public class DashboardController {
     @FXML private Button stockAlertButton;
     @FXML private Button damageExpiryReportButton;
     @FXML private Button adjustMentEntriesReportButton;
-
     @FXML private StackPane centerStackPane;
-
     @FXML private GridPane materialScreen;
     @FXML private GridPane companyScreen;
+    @FXML
+    private GridPane welcomeScreen;
 
-    public DashboardController() {}
+
+    public DashboardController() {
+    }
 
     @FXML protected void handlematerialButtonAction(ActionEvent event){
-        System.out.println("I am here1");
-        companyScreen.setVisible(false);
+        invisibleAll();
         materialScreen.setVisible(true);
     }
 
     @FXML protected void handleCompanyButtonAction(ActionEvent event){
-        System.out.println("I am here");
+        invisibleAll();
         companyScreen.setVisible(true);
-        materialScreen.setVisible(false);
     }
 
+    @FXML
+    public void handleWelcomeScreenAction() {
+        invisibleAll();
+        welcomeScreen.setVisible(true);
+        welcomeController.loadCompanyWiseSales();
+        welcomeController.loadCompanyWisePurchase();
+        welcomeController.loadPurchaseSaleCompare();
+        welcomeController.loadWeeklyInMaterial();
+
+    }
+
+    private void invisibleAll() {
+        companyScreen.setVisible(false);
+        materialScreen.setVisible(false);
+        welcomeScreen.setVisible(false);
+    }
 }
