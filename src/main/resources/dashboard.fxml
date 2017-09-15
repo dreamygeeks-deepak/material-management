@@ -29,8 +29,8 @@
    </left>
    <center>
        <StackPane fx:id="centerStackPane" prefHeight="150.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-          <fx:include fx:id="companyScreen"  source="company.fxml"></fx:include>
            <fx:include fx:id="materialScreen" source="material.fxml"></fx:include>
+           <fx:include fx:id="companyScreen" source="company.fxml"></fx:include>
       </StackPane>
    </center>
 </BorderPane>
