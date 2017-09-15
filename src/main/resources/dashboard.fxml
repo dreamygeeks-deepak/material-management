@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dreamygeeks.mms.dashboard.DashboardController">
+<?import java.net.URL?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="root"
+            xmlns="http://javafx.com/javafx/8.0.112" fx:controller="com.dreamygeeks.mms.dashboard.DashboardController">
     <stylesheets>
         <URL value="@Login.css" />
     </stylesheets>
@@ -29,9 +28,9 @@
       </VBox>
    </left>
    <center>
-      <StackPane fx:id="centerStackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" >
-          <fx:include fx:id="materialScreen" source="material.fxml"></fx:include>
+       <StackPane fx:id="centerStackPane" prefHeight="150.0" prefWidth="400.0" BorderPane.alignment="CENTER">
           <fx:include fx:id="companyScreen"  source="company.fxml"></fx:include>
+           <fx:include fx:id="materialScreen" source="material.fxml"></fx:include>
       </StackPane>
    </center>
 </BorderPane>

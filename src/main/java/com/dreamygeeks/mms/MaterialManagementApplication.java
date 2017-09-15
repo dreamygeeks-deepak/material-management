@@ -28,8 +28,8 @@ public class MaterialManagementApplication extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Scene scene = new Scene(root,800,600);
-		primaryStage.setScene(scene);
+        Scene scene = new Scene(root, 950, 600);
+        primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 

@@ -34,9 +34,6 @@ root {
     display: block;
 }
 
-.root {
-     -fx-background-image: url("background.jpg");
-}
 
 .label {
     -fx-font-size: 12px;
@@ -64,6 +61,15 @@ root {
     -fx-font-weight: bold;
     -fx-background-color: linear-gradient(#61a2b1, #2A5058);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#circleButton {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-border-radius: 20;
 }
 
 .button:hover {
