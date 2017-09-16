@@ -1,5 +1,8 @@
 package com.dreamygeeks.mms.material;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +11,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MaterialController {
+
+
+    @FXML
+    Button addMaterialButton;
+    @FXML
+    Button updateMaterialButton;
+    @FXML
+    Button deleteMaterialButton;
 
     @Autowired
     MaterialRepository materialRepository;
@@ -20,5 +31,10 @@ public class MaterialController {
         System.out.println("Saving");
         materialRepository.save(material);
         System.out.println("Saved");
+    }
+
+    @FXML
+    void addAction(ActionEvent event) {
+
     }
 }

@@ -51,7 +51,7 @@
     </stylesheets>
     <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="0">
         <Label text="Search"/>
-        <TextField id="searchText" promptText="Typy company name here..."/>
+        <TextField id="searchText" promptText="Typy companies name here..."/>
     </VBox>
     <TableView GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1" GridPane.rowSpan="7">
         <columns>

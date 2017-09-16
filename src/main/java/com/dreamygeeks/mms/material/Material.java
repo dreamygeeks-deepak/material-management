@@ -1,6 +1,9 @@
 package com.dreamygeeks.mms.material;
 
+import com.dreamygeeks.mms.company.Company;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by deepak_shingan on 9/13/2017.
@@ -8,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Material")
 public class Material {
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Id
@@ -16,19 +19,19 @@ public class Material {
     @Column(nullable = false, columnDefinition = "BIGINT")
     private Long id;
 
+    private String description;
+    private String hsn;
+    private Unit unit;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "material_company", joinColumns = @JoinColumn(name = "material_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
+    private Set<Company> companies;
+
     public Material() {
     }
 
     public Material(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Material{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                '}';
     }
 
     public String getName() {
@@ -45,5 +48,49 @@ public class Material {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getHsn() {
+        return hsn;
+    }
+
+    public void setHsn(String hsn) {
+        this.hsn = hsn;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+
+    public Set<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(Set<Company> companies) {
+        this.companies = companies;
+    }
+
+    @Override
+    public String toString() {
+        return "Material{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", description='" + description + '\'' +
+                ", hsn='" + hsn + '\'' +
+                ", unit=" + unit +
+                ", companies=" + companies +
+                '}';
     }
 }

@@ -36,6 +36,7 @@ package fxmlexample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -43,16 +44,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FXMLExampleController {
-    @FXML private Text actiontarget;
-    
-    @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-        actiontarget.setText("Sign in button pressed");
-        controller.save(new Material("deeopaj"));
-    }
-
+    @FXML
+    TextField username;
     @Autowired
     MaterialController controller;
+    @FXML
+    private Text actiontarget;
 
     public FXMLExampleController() {
+    }
+
+    @FXML
+    protected void handleSubmitButtonAction(ActionEvent event) {
+        actiontarget.setText("Sign in button pressed");
+        controller.save(new Material(username.getText()));
     }
 }

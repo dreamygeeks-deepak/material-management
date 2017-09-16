@@ -39,7 +39,8 @@
 <?import javafx.scene.text.Text?>
 <?import java.lang.*?>
 <?import java.net.URL?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefWidth="280.0" styleClass="root" vgap="10"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dreamygeeks.mms.material.MaterialController"
+          alignment="center" hgap="10" prefWidth="280.0" styleClass="root" vgap="10"
           xmlns="http://javafx.com/javafx/8.0.112">
     <padding>
         <Insets bottom="10" left="25" right="25" top="25"/>
@@ -93,9 +94,9 @@
     </HBox>
 
     <HBox prefHeight="50.0" prefWidth="200.0" spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="7">
-        <Button fx:id="stockAlertButton" prefHeight="50.0" prefWidth="70.0" text="Add"/>
-        <Button fx:id="damageExpiryReportButton" prefHeight="50.0" prefWidth="70.0" text="Update"/>
-        <Button fx:id="adjustMentEntriesReportButton" prefHeight="50.0" prefWidth="70.0" text="Delete"/>
+        <Button fx:id="addMaterialButton" onAction="#addAction" prefHeight="50.0" prefWidth="70.0" text="Add"/>
+        <Button fx:id="updateMaterialButton" prefHeight="50.0" prefWidth="70.0" text="Update"/>
+        <Button fx:id="deleteMaterialButton" prefHeight="50.0" prefWidth="70.0" text="Delete"/>
     </HBox>
     <stylesheets>
         <URL value="@Login.css" />
