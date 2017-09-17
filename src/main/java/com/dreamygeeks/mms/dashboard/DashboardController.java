@@ -35,8 +35,12 @@ public class DashboardController {
     @FXML
     private GridPane welcomeScreen;
 
-
     public DashboardController() {
+    }
+
+    @FXML
+    void initialize() {
+        handleWelcomeScreenAction();
     }
 
     @FXML protected void handlematerialButtonAction(ActionEvent event){

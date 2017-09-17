@@ -37,10 +37,11 @@ public class MaterialController {
     TableView<Material> materialTable;
     @Autowired
     MaterialRepository materialRepository;
-
     @FXML
     TextField searchText;
 
+    ObservableList<Material> data = FXCollections.observableArrayList();
+    FilteredList<Material> filteredData = new FilteredList<>(data, p -> true);
 
     public MaterialController() {
     }
@@ -65,21 +66,12 @@ public class MaterialController {
     }
 
     @FXML
-    void onSearchTyped() {
-        searchText.getText();
-
-    }
-
-    @FXML
-    void updateTableContent() {
+    void initialize() {
         Iterable<Material> materialData = materialRepository.findAll();
-        ObservableList<Material> data = FXCollections.observableArrayList();
-
         for (Material material : materialData) {
             data.add(material);
         }
-        //TODO - Remove code from here
-        FilteredList<Material> filteredData = new FilteredList<>(data, p -> true);
+
         searchText.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(material -> {
                 // If filter text is empty, display all persons.
@@ -102,5 +94,10 @@ public class MaterialController {
             });
         });
         materialTable.setItems(filteredData);
+    }
+
+    @FXML
+    void updateTableContent() {
+
     }
 }
