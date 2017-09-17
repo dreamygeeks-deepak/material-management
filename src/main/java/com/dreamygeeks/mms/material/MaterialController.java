@@ -2,6 +2,7 @@ package com.dreamygeeks.mms.material;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -37,6 +38,10 @@ public class MaterialController {
     @Autowired
     MaterialRepository materialRepository;
 
+    @FXML
+    TextField searchText;
+
+
     public MaterialController() {
     }
 
@@ -60,13 +65,42 @@ public class MaterialController {
     }
 
     @FXML
+    void onSearchTyped() {
+        searchText.getText();
+
+    }
+
+    @FXML
     void updateTableContent() {
         Iterable<Material> materialData = materialRepository.findAll();
         ObservableList<Material> data = FXCollections.observableArrayList();
+
         for (Material material : materialData) {
             data.add(material);
         }
+        //TODO - Remove code from here
+        FilteredList<Material> filteredData = new FilteredList<>(data, p -> true);
+        searchText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(material -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
 
-        materialTable.setItems(data);
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (material.getName().toLowerCase().contains(lowerCaseFilter) ||
+                        material.getDescription().toLowerCase().contains(lowerCaseFilter) ||
+                        material.getHsn().toLowerCase().contains(lowerCaseFilter) ||
+                        material.getId().toString().contains(lowerCaseFilter) ||
+                        material.getUnit().toLowerCase().contains(lowerCaseFilter)
+                        ) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+        });
+        materialTable.setItems(filteredData);
     }
 }

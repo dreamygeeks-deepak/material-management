@@ -52,7 +52,7 @@
     </stylesheets>
     <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="0">
         <Label text="Search"/>
-        <TextField id="searchText" promptText="Typy material name here..."/>
+        <TextField promptText="Typy material name here..." fx:id="searchText"/>
     </VBox>
     <TableView fx:id="materialTable" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1"
                GridPane.rowSpan="6">

@@ -89,6 +89,22 @@ public class Material {
         this.companies = companies;
     }
 
+    public int getMinimumStockLimit() {
+        return minimumStockLimit;
+    }
+
+    public void setMinimumStockLimit(int minimumStockLimit) {
+        this.minimumStockLimit = minimumStockLimit;
+    }
+
+    public int getCurrentMaterialStock() {
+        return currentMaterialStock;
+    }
+
+    public void setCurrentMaterialStock(int currentMaterialStock) {
+        this.currentMaterialStock = currentMaterialStock;
+    }
+
     @Override
     public String toString() {
         return "Material{" +
@@ -96,7 +112,9 @@ public class Material {
                 ", id=" + id +
                 ", description='" + description + '\'' +
                 ", hsn='" + hsn + '\'' +
-                ", unit=" + unit +
+                ", unit='" + unit + '\'' +
+                ", minimumStockLimit=" + minimumStockLimit +
+                ", currentMaterialStock=" + currentMaterialStock +
                 ", companies=" + companies +
                 '}';
     }
