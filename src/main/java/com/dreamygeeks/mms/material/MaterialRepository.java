@@ -20,4 +20,5 @@ public interface MaterialRepository extends PagingAndSortingRepository<Material,
     @Query(value = FIND_MATERIAL_NAMES, nativeQuery = true)
     public Set<Object[]> findMaterialNames();
 
+    List<Material> findAllByOrderByIdAsc();
 }

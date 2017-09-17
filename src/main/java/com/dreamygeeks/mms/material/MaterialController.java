@@ -3,6 +3,7 @@ package com.dreamygeeks.mms.material;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -34,6 +35,10 @@ public class MaterialController {
     @FXML
     ComboBox companyCombo;
     @FXML
+    TextField minimumStockLimitText;
+    @FXML
+    TextField currentMaterialStockText;
+    @FXML
     TableView<Material> materialTable;
     @Autowired
     MaterialRepository materialRepository;
@@ -48,40 +53,82 @@ public class MaterialController {
 
     @FXML
     void addAction(ActionEvent event) {
-        Material material = new Material(nameText.getText(), descriptionText.getText(), hsnText.getText(), unitCombo.getSelectionModel().getSelectedItem().toString(), null);
+        Material material = getMaterialObject();
         materialRepository.save(material);
-        updateTableContent();
+        tableRefresh();
+    }
+
+    private Material getMaterialObject() {
+        return new Material(nameText.getText(),
+                descriptionText.getText(),
+                hsnText.getText(),
+                unitCombo.getSelectionModel().getSelectedItem().toString(),
+                Integer.parseInt(minimumStockLimitText.getText()),
+                Integer.parseInt(currentMaterialStockText.getText()));
     }
 
     @FXML
     void updateAction(ActionEvent event) {
-        Material material = new Material(nameText.getText(), descriptionText.getText(), hsnText.getText(), unitCombo.getSelectionModel().getSelectedItem().toString(), null);
+        Material material = getMaterialObject();
         material.setId(Long.parseLong(idText.getText()));
         materialRepository.save(material);
+        tableRefresh();
     }
 
     @FXML
     void deleteAction(ActionEvent event) {
         materialRepository.delete(Long.parseLong(idText.getText()));
+        tableRefresh();
     }
 
     @FXML
     void initialize() {
-        Iterable<Material> materialData = materialRepository.findAll();
-        for (Material material : materialData) {
-            data.add(material);
-        }
+        onTableRowSelect();
+        tableRefresh();
+    }
 
+    private void tableRefresh() {
+        getDataAndSetToTable();
+        setSearchAction();
+
+        //Add Auto-Sort
+        SortedList<Material> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(materialTable.comparatorProperty());
+        materialTable.setItems(sortedData);
+    }
+
+    private void onTableRowSelect() {
+        materialTable.setRowFactory(tv -> {
+            TableRow<Material> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Material rowData = row.getItem();
+                    displayOnForm(rowData);
+                }
+            });
+            return row;
+        });
+    }
+
+    private void displayOnForm(Material material) {
+        idText.setText(material.getId().toString());
+        nameText.setText(material.getName());
+        descriptionText.setText(material.getDescription());
+        hsnText.setText(material.getHsn());
+        unitCombo.getSelectionModel().select(material.getUnit());
+        minimumStockLimitText.setText(material.getMinimumStockLimit().toString());
+        currentMaterialStockText.setText(material.getCurrentMaterialStock().toString());
+    }
+
+    private void setSearchAction() {
         searchText.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(material -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
-
                 if (material.getName().toLowerCase().contains(lowerCaseFilter) ||
                         material.getDescription().toLowerCase().contains(lowerCaseFilter) ||
                         material.getHsn().toLowerCase().contains(lowerCaseFilter) ||
@@ -93,11 +140,13 @@ public class MaterialController {
                 return false; // Does not match.
             });
         });
-        materialTable.setItems(filteredData);
     }
 
-    @FXML
-    void updateTableContent() {
-
+    private void getDataAndSetToTable() {
+        Iterable<Material> materialData = materialRepository.findAllByOrderByIdAsc();
+        data.clear();
+        for (Material material : materialData) {
+            data.add(material);
+        }
     }
 }

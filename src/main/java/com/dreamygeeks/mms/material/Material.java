@@ -22,8 +22,8 @@ public class Material {
     private String description;
     private String hsn;
     private String unit;
-    private int minimumStockLimit;
-    private int currentMaterialStock;
+    private Integer minimumStockLimit;
+    private Integer currentMaterialStock;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "material_company", joinColumns = @JoinColumn(name = "material_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
@@ -32,14 +32,14 @@ public class Material {
     public Material() {
     }
 
-    public Material(String name, String description, String hsn, String unit, Set<Company> companies) {
+    public Material(String name, String description, String hsn, String unit, Integer minimumStockLimit, Integer currentMaterialStock) {
         this.name = name;
         this.description = description;
         this.hsn = hsn;
         this.unit = unit;
-        this.companies = companies;
+        this.minimumStockLimit = minimumStockLimit;
+        this.currentMaterialStock = currentMaterialStock;
     }
-
 
     public String getName() {
         return name;
@@ -89,19 +89,19 @@ public class Material {
         this.companies = companies;
     }
 
-    public int getMinimumStockLimit() {
+    public Integer getMinimumStockLimit() {
         return minimumStockLimit;
     }
 
-    public void setMinimumStockLimit(int minimumStockLimit) {
+    public void setMinimumStockLimit(Integer minimumStockLimit) {
         this.minimumStockLimit = minimumStockLimit;
     }
 
-    public int getCurrentMaterialStock() {
+    public Integer getCurrentMaterialStock() {
         return currentMaterialStock;
     }
 
-    public void setCurrentMaterialStock(int currentMaterialStock) {
+    public void setCurrentMaterialStock(Integer currentMaterialStock) {
         this.currentMaterialStock = currentMaterialStock;
     }
 
@@ -115,7 +115,6 @@ public class Material {
                 ", unit='" + unit + '\'' +
                 ", minimumStockLimit=" + minimumStockLimit +
                 ", currentMaterialStock=" + currentMaterialStock +
-                ", companies=" + companies +
                 '}';
     }
 }
