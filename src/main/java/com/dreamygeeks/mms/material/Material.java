@@ -22,6 +22,8 @@ public class Material {
     private String description;
     private String hsn;
     private String unit;
+    private int minimumStockLimit;
+    private int currentMaterialStock;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "material_company", joinColumns = @JoinColumn(name = "material_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))

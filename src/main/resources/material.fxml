@@ -82,6 +82,11 @@
                     <PropertyValueFactory property="unit"/>
                 </cellValueFactory>
             </TableColumn>
+            <TableColumn text="Current Stock" fx:id="currentMaterialStockColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="currentMaterialStock"/>
+                </cellValueFactory>
+            </TableColumn>
         </columns>
     </TableView>
     <Text id="welcome-text" text="Material" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
@@ -119,7 +124,11 @@
         <Button prefHeight="20" prefWidth="20" text="+"></Button>
     </HBox>
 
-    <HBox prefHeight="50.0" prefWidth="200.0" spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="7">
+    <Label text="Minimum Stock Limit" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <TextField fx:id="minimumStockLimit" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+    <Label text="Curent Stock" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+    <TextField fx:id="currentMaterialStock" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+    <HBox prefHeight="50.0" prefWidth="200.0" spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="9">
         <Button fx:id="addMaterialButton" onAction="#addAction" prefHeight="50.0" prefWidth="70.0" text="Add"/>
         <Button fx:id="updateMaterialButton" onAction="#updateAction" prefHeight="50.0" prefWidth="70.0" text="Update"/>
         <Button fx:id="deleteMaterialButton" onAction="#deleteAction" prefHeight="50.0" prefWidth="70.0" text="Delete"/>
