@@ -35,6 +35,7 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.lang.*?>
@@ -53,9 +54,33 @@
         <Label text="Search"/>
         <TextField id="searchText" promptText="Typy material name here..."/>
     </VBox>
-    <TableView GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1" GridPane.rowSpan="6">
+    <TableView fx:id="materialTable" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1"
+               GridPane.rowSpan="6">
         <columns>
-            <TableColumn text="Available Material List">
+            <TableColumn text="Id" fx:id="idColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Name" fx:id="nameColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Description" fx:id="descriptionColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="HSN" fx:id="hsnColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="hsn"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Unit" fx:id="unitColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="unit"/>
+                </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>

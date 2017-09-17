@@ -1,11 +1,10 @@
 package com.dreamygeeks.mms.material;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +32,8 @@ public class MaterialController {
     ComboBox unitCombo;
     @FXML
     ComboBox companyCombo;
+    @FXML
+    TableView<Material> materialTable;
     @Autowired
     MaterialRepository materialRepository;
 
@@ -43,6 +44,7 @@ public class MaterialController {
     void addAction(ActionEvent event) {
         Material material = new Material(nameText.getText(), descriptionText.getText(), hsnText.getText(), unitCombo.getSelectionModel().getSelectedItem().toString(), null);
         materialRepository.save(material);
+        updateTableContent();
     }
 
     @FXML
@@ -55,5 +57,16 @@ public class MaterialController {
     @FXML
     void deleteAction(ActionEvent event) {
         materialRepository.delete(Long.parseLong(idText.getText()));
+    }
+
+    @FXML
+    void updateTableContent() {
+        Iterable<Material> materialData = materialRepository.findAll();
+        ObservableList<Material> data = FXCollections.observableArrayList();
+        for (Material material : materialData) {
+            data.add(material);
+        }
+
+        materialTable.setItems(data);
     }
 }

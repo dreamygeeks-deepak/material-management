@@ -15,7 +15,6 @@ import java.util.Set;
 public interface MaterialRepository extends PagingAndSortingRepository<Material, Long>{
 
     String FIND_MATERIAL_NAMES = "SELECT id, name FROM Material";
-
     List<Material> findByName(@Param("name") String name);
 
     @Query(value = FIND_MATERIAL_NAMES, nativeQuery = true)
