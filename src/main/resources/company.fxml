@@ -38,7 +38,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefWidth="280.0" styleClass="root" vgap="10"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" visible="false" alignment="center" hgap="10" prefWidth="280.0"
+          styleClass="root" vgap="10"
           xmlns="http://javafx.com/javafx/8.0.112">
     <stylesheets>
         <URL value="@Login.css"/>

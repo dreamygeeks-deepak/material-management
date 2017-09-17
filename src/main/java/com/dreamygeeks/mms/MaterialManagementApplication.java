@@ -14,7 +14,6 @@ public class MaterialManagementApplication extends Application {
 
 	private ConfigurableApplicationContext springContext;
     private Parent root;
-
 	public static void main(String[] args) {
         launch(MaterialManagementApplication.class, args);
 	}

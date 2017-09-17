@@ -21,7 +21,7 @@ public class Material {
 
     private String description;
     private String hsn;
-    private Unit unit;
+    private String unit;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "material_company", joinColumns = @JoinColumn(name = "material_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
@@ -30,9 +30,14 @@ public class Material {
     public Material() {
     }
 
-    public Material(String name) {
+    public Material(String name, String description, String hsn, String unit, Set<Company> companies) {
         this.name = name;
+        this.description = description;
+        this.hsn = hsn;
+        this.unit = unit;
+        this.companies = companies;
     }
+
 
     public String getName() {
         return name;
@@ -66,11 +71,11 @@ public class Material {
         this.hsn = hsn;
     }
 
-    public Unit getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(Unit unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 

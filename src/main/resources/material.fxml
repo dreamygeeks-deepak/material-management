@@ -39,7 +39,8 @@
 <?import javafx.scene.text.Text?>
 <?import java.lang.*?>
 <?import java.net.URL?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dreamygeeks.mms.material.MaterialController"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" visible="false"
+          fx:controller="com.dreamygeeks.mms.material.MaterialController"
           alignment="center" hgap="10" prefWidth="280.0" styleClass="root" vgap="10"
           xmlns="http://javafx.com/javafx/8.0.112">
     <padding>
@@ -60,15 +61,15 @@
     </TableView>
     <Text id="welcome-text" text="Material" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
     <Label text="Id" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="idText" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="nameText" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     <Label text="Description" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <TextArea GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <TextArea fx:id="descriptionText" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
     <Label text="HSN" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <TextField fx:id="hsnText" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
     <Label text="Unit" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-    <ComboBox GridPane.columnIndex="1" GridPane.rowIndex="5">
+    <ComboBox fx:id="unitCombo" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Kg"/>
@@ -84,7 +85,7 @@
 
     <Label text="Company" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
     <HBox GridPane.columnIndex="1" spacing="10" GridPane.rowIndex="6" alignment="CENTER_LEFT">
-        <ComboBox>
+        <ComboBox fx:id="companyCombo">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                 </FXCollections>
@@ -95,8 +96,8 @@
 
     <HBox prefHeight="50.0" prefWidth="200.0" spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="7">
         <Button fx:id="addMaterialButton" onAction="#addAction" prefHeight="50.0" prefWidth="70.0" text="Add"/>
-        <Button fx:id="updateMaterialButton" prefHeight="50.0" prefWidth="70.0" text="Update"/>
-        <Button fx:id="deleteMaterialButton" prefHeight="50.0" prefWidth="70.0" text="Delete"/>
+        <Button fx:id="updateMaterialButton" onAction="#updateAction" prefHeight="50.0" prefWidth="70.0" text="Update"/>
+        <Button fx:id="deleteMaterialButton" onAction="#deleteAction" prefHeight="50.0" prefWidth="70.0" text="Delete"/>
     </HBox>
     <stylesheets>
         <URL value="@Login.css" />
