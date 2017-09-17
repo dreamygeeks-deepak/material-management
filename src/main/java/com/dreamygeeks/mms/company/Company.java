@@ -18,6 +18,7 @@ public class Company {
     @Column(nullable = false, unique = true)
     private String name;
     private String description;
+    private String address;
     private Long phoneNumber1;
     private Long phoneNumber2;
     private String email;
@@ -29,13 +30,14 @@ public class Company {
     public Company() {
     }
 
-    public Company(String name, String description, Long phoneNumber1, Long phoneNumber2, String email, Set<Material> materials, boolean isSuppier, boolean isCustomer) {
+
+    public Company(String name, String description, String address, Long phoneNumber1, Long phoneNumber2, String email, boolean isSuppier, boolean isCustomer) {
         this.name = name;
         this.description = description;
+        this.address = address;
         this.phoneNumber1 = phoneNumber1;
         this.phoneNumber2 = phoneNumber2;
         this.email = email;
-        this.materials = materials;
         this.isSuppier = isSuppier;
         this.isCustomer = isCustomer;
     }
@@ -62,6 +64,14 @@ public class Company {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getPhoneNumber1() {

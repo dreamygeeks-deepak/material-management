@@ -51,13 +51,6 @@ public class MaterialController {
     public MaterialController() {
     }
 
-    @FXML
-    void addAction(ActionEvent event) {
-        Material material = getMaterialObject();
-        materialRepository.save(material);
-        tableRefresh();
-    }
-
     private Material getMaterialObject() {
         return new Material(nameText.getText(),
                 descriptionText.getText(),
@@ -65,6 +58,13 @@ public class MaterialController {
                 unitCombo.getSelectionModel().getSelectedItem().toString(),
                 Integer.parseInt(minimumStockLimitText.getText()),
                 Integer.parseInt(currentMaterialStockText.getText()));
+    }
+
+    @FXML
+    void addAction(ActionEvent event) {
+        Material material = getMaterialObject();
+        materialRepository.save(material);
+        tableRefresh();
     }
 
     @FXML

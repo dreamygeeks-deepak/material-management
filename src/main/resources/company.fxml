@@ -35,10 +35,12 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" visible="false" alignment="center" hgap="10" prefWidth="280.0"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dreamygeeks.mms.company.CompanyController"
+          visible="false" alignment="center" hgap="10" prefWidth="280.0"
           styleClass="root" vgap="10"
           xmlns="http://javafx.com/javafx/8.0.112">
     <stylesheets>
@@ -52,33 +54,77 @@
     </stylesheets>
     <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="0">
         <Label text="Search"/>
-        <TextField id="searchText" promptText="Typy companies name here..."/>
+        <TextField id="searchText" promptText="Type companies name here..." fx:id="companySearchText"/>
     </VBox>
-    <TableView GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1" GridPane.rowSpan="7">
+    <TableView fx:id="companyTable" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="1"
+               GridPane.rowSpan="7">
         <columns>
-            <TableColumn text="Available Company List">
+            <TableColumn text="Id" fx:id="idColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Name" fx:id="nameColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Description" fx:id="descriptionColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Address" fx:id="addressColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="address"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Phone# 1" fx:id="phoneNumber1Column">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phoneNumber1"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Phone# 2" fx:id="phoneNumber2Column">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phoneNumber2"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email" fx:id="emailColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Is Supplier" fx:id="isSupplierColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="isSupplier"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Is Customer" fx:id="isCustomerColumn">
+                <cellValueFactory>
+                    <PropertyValueFactory property="isCustomer"/>
+                </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
     <Text id="welcome-text" text="Company" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
     <Label text="Id" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="idText" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="nameText" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     <Label text="Description" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <TextArea GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
     <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-    <TextArea GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <TextArea fx:id="addressTextArea" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
     <Label prefWidth="100" text="Phone number#1" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS"
            GridPane.rowIndex="5"/>
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <TextField fx:id="phoneNumber1Text" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
     <Label prefWidth="100" text="Phone number#2" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <TextField fx:id="phoneNumber2Text" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     <Label text="email" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+    <TextField fx:id="emailText" accessibleHelp="" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
     <Label text="Material" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <HBox GridPane.columnIndex="1" spacing="10" GridPane.rowIndex="8" alignment="CENTER_LEFT">
-        <ComboBox>
+        <ComboBox fx:id="comboBox">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                 </FXCollections>
@@ -86,27 +132,11 @@
         </ComboBox>
         <Button prefHeight="20" prefWidth="20" text="+"></Button>
     </HBox>
-    <CheckBox text="Supplier" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-    <CheckBox text="Customer" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+    <CheckBox text="Supplier" fx:id="supplierCheckbox" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+    <CheckBox text="Customer" fx:id="customerCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
     <HBox prefHeight="50.0" prefWidth="200.0" spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="11">
-        <Button fx:id="stockAlertButton" prefHeight="50.0" prefWidth="70.0" text="Add"/>
-        <Button fx:id="damageExpiryReportButton" prefHeight="50.0" prefWidth="70.0" text="Update"/>
-        <Button fx:id="adjustMentEntriesReportButton" prefHeight="50.0" prefWidth="70.0" text="Delete"/>
+        <Button fx:id="addCompanyButton" prefHeight="50.0" prefWidth="70.0" onAction="#addAction" text="Add"/>
+        <Button fx:id="updateCompanyButton" prefHeight="50.0" prefWidth="70.0" onAction="#updateAction" text="Update"/>
+        <Button fx:id="deleteCompanyButton" prefHeight="50.0" prefWidth="70.0" onAction="#deleteAction" text="Delete"/>
     </HBox>
-    <columnConstraints>
-        <ColumnConstraints />
-        <ColumnConstraints />
-        <ColumnConstraints/>
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints/>
-        <RowConstraints/>
-    </rowConstraints>
 </GridPane>
